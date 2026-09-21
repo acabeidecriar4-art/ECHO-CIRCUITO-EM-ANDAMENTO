@@ -1,0 +1,72 @@
+{
+  "browser": "153.0.8010.0",
+  "checkedAt": "2026-09-14T14:32:55.824Z",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "touch": false,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "tablet",
+      "width": 820,
+      "height": 1180,
+      "touch": true,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "tablet-landscape",
+      "width": 1180,
+      "height": 820,
+      "touch": true,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "touch": true,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "small-mobile",
+      "width": 320,
+      "height": 740,
+      "touch": true,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    }
+  ],
+  "flows": [
+    "Responsive layout with no horizontal overflow",
+    "Mobile menu and anchor navigation",
+    "Featured event switching and direct matchup access",
+    "Cinematic opening: all chapters, keyboard navigation, close and competition CTA",
+    "Category, accent-insensitive search, status and empty-state reset",
+    "Follow/unfollow persistence after reload",
+    "Monthly agenda navigation",
+    "Competition overview, matches and regulations",
+    "Direct competition URL after fresh load",
+    "Dialog close and Escape",
+    "Format tabs and keyboard arrow navigation",
+    "Demo Echo iD persistence",
+    "Circuit information modal",
+    "No JavaScript errors or failed assets"
+  ]
+}

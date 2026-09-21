@@ -1,0 +1,67 @@
+{
+  "browser": "153.0.8010.0",
+  "checkedAt": "2026-09-14T14:36:45.059Z",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "tablet",
+      "width": 820,
+      "height": 1180,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "tablet-landscape",
+      "width": 1180,
+      "height": 820,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    },
+    {
+      "name": "small-mobile",
+      "width": 320,
+      "height": 740,
+      "status": "passed",
+      "horizontalOverflow": false,
+      "javascriptErrors": [],
+      "failedAssets": []
+    }
+  ],
+  "journeys": [
+    "Player identity and reload persistence",
+    "Team creation, duplicate player validation, pending invites and simulated acceptance",
+    "Registration readiness, rules acknowledgement and review",
+    "Duplicate registration prevention",
+    "Organizer approval and rejection with required reason",
+    "Check-in, cancellation confirmation and Escape",
+    "Submitted roster remains unchanged after profile edits",
+    "Syndicate eligibility requirement",
+    "Draft creation, editing, preview and deletion",
+    "User content escapes in all draft previews",
+    "Favorites shared with landing page",
+    "Mobile navigation and browser history",
+    "Desktop/tablet/mobile layout, zero page overflow",
+    "Storage denied: session-only mode with visible notice"
+  ]
+}

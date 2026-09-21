@@ -1,0 +1,17 @@
+{
+  "name": "echo-circuit",
+  "private": true,
+  "version": "0.7.0-beta",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs --dist",
+    "check": "node scripts/check.mjs",
+    "build": "node build.mjs"
+  },
+  "displayName": "Echo Circuit",
+  "description": "Echo Circuit — protótipo independente de E-Sports do Echo Arena",
+  "engines": {
+    "node": ">=20"
+  }
+}
