@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090a0e">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Echo Circuit: a experiência competitiva do Echo Arena. Explore torneios, formatos e a jornada até a final nesta prévia interativa.">
+  <title>Echo Circuit · E-Sports do Echo Arena</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/barlow-condensed-800.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="event-edition.css?v=3">
+  <link rel="preload" href="assets/championship-stage.webp" as="image">
+  <script src="data.js?v=3" defer></script>
+  <script src="portal-store.js?v=3" defer></script>
+  <script src="app.js?v=3" defer></script>
+  <script src="event-edition.js?v=2" defer></script>
+</head>
+<body>
+  <svg class="emblem-definitions" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="metal" x2=".8" y2="1"><stop stop-color="#fff2c8"/><stop offset=".42" stop-color="#dfb874"/><stop offset=".65" stop-color="#8f6130"/><stop offset="1" stop-color="#f0cf90"/></linearGradient><symbol id="crest-nova" viewBox="0 0 100 110"><path d="M50 4 92 22 86 75 50 105 14 75 8 22Z" fill="#211215" stroke="currentColor" stroke-width="2"/><path d="M50 12 83 27 77 72 50 94 23 72 17 27Z" fill="currentColor" opacity=".16"/><path d="m53 20-26 40h20l-5 29 30-45H52l8-24Z" fill="currentColor"/><path d="m9 30-7 17 11 24m78-41 7 17-11 24" fill="none" stroke="currentColor" stroke-width="2"/></symbol><symbol id="crest-vortex" viewBox="0 0 100 110"><path d="M50 4 92 22 86 75 50 105 14 75 8 22Z" fill="#141324" stroke="currentColor" stroke-width="2"/><path d="m50 22 27 14 1 30-28 20-28-20 1-30Z" fill="currentColor" opacity=".15"/><path d="m24 36 18 9 8 23 8-23 18-9-26 48Z" fill="currentColor"/><path d="m42 26 8-7 8 7-8 18Z" fill="currentColor"/></symbol><symbol id="crest-syndicate" viewBox="0 0 100 110"><path d="M50 4 92 22 86 75 50 105 14 75 8 22Z" fill="#20180f" stroke="currentColor" stroke-width="2"/><path d="m50 25 12 20 26-11-13 23-20 8-5 20-5-20-20-8-13-23 26 11Z" fill="url(#metal)"/><path d="m50 34 9 16-9 11-9-11Z" fill="#402211"/></symbol></defs></svg>
+  <a class="skip" href="#competicoes">Pular para competições</a>
+  <div class="preview-bar"><span class="lock-icon" aria-hidden="true">◇</span> PRÉVIA PRIVADA <span class="preview-sep">/</span><span>Experiência interativa · eventos e resultados demonstrativos</span></div>
+  <header class="header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#inicio" aria-label="Echo Arena E-Sports, início"><span class="brand-mark" aria-hidden="true"><i></i></span><span class="brand-word">ECHO <b>ARENA</b><small>E-SPORTS NETWORK</small></span></a>
+      <nav class="nav" id="main-nav" aria-label="Navegação principal"><a href="#inicio" class="active">O espetáculo</a><a href="#competicoes">Competições</a><a href="#formatos">Formatos</a><a href="#circuito">O circuito</a></nav>
+      <div class="header-actions"><button class="id-button" id="echo-id"><span class="user-symbol" aria-hidden="true">◈</span><span>Echo iD</span><span class="arrow" aria-hidden="true">↗</span></button><button class="menu-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav" id="menu-button"><span></span><span></span></button></div>
+    </div>
+  </header>
+  <main>
+    <section class="event-opening" id="inicio" aria-labelledby="hero-title">
+      <div class="championship-hero">
+        <img class="stadium-art" src="assets/championship-stage.webp" alt="" width="1536" height="1024" fetchpriority="high">
+        <div class="stadium-shade" aria-hidden="true"></div><div class="spotlight-beam beam-one" aria-hidden="true"></div><div class="spotlight-beam beam-two" aria-hidden="true"></div>
+        <div class="embers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="event-hero-content wrap">
+          <div class="season-label"><span class="label-line"></span>ECHO CIRCUIT <b>MMXXVI</b></div>
+          <h1 id="hero-title">ONDE<br>NASCEM<br><span>LENDAS.</span></h1>
+          <p class="event-hero-description">Toda grande história começa com um desafio.<br>A sua está prestes a entrar na arena.</p>
+          <div class="hero-ctas"><a class="button primary" href="#competicoes">ENCONTRE SUA COMPETIÇÃO <span aria-hidden="true">↗</span></a><button class="opening-trigger" data-opening aria-label="Assistir à abertura animada do circuito"><span class="play-ring" aria-hidden="true">▷</span><span>ABERTURA<br><b>DO CIRCUITO</b></span></button></div>
+          <div class="hero-event-details"><span>BULLET ECHO</span><i></i><span>FEITO PELA COMUNIDADE</span></div>
+          <div class="trophy-caption"><span class="trophy-caption-line"></span><small>GLÓRIA CONQUISTADA.<br>LEGADO ETERNO.</small><strong>UM LUGAR<br>NO TOPO.</strong></div>
+          <div class="hero-bottom"><a href="#palco" class="scroll-cue"><span aria-hidden="true">↓</span> SINTA A COMPETIÇÃO</a><button id="motion-toggle" class="motion-toggle" aria-pressed="false"><span aria-hidden="true">Ⅱ</span> Pausar efeitos</button></div>
+        </div>
+        <div class="edition-stamp" aria-hidden="true"><span>EST.</span><strong>2026</strong><span>ECHO ARENA</span></div>
+      </div>
+      <div class="circuit-ribbon" aria-hidden="true"><div>O PALCO É NOSSO <span>✦</span> A GLÓRIA É SUA <span>✦</span> ECHO CIRCUIT 2026 <span>✦</span> O PALCO É NOSSO <span>✦</span> A GLÓRIA É SUA <span>✦</span> ECHO CIRCUIT 2026 <span>✦</span></div></div>
+      <div class="main-stage wrap" id="palco">
+        <div class="stage-heading"><div><p class="eyebrow gold">HOLOFOTES ACESOS</p><h2>O PALCO ESTÁ <span>ARMADO.</span></h2></div><span class="stage-demo-label">CENÁRIOS DE DEMONSTRAÇÃO</span></div>
+        <div class="stage-shell"><div class="stage-tabs" role="tablist" aria-label="Competição em destaque"><button role="tab" id="stage-tab-masters" aria-selected="true" aria-controls="stage-panel" data-stage="masters"><span>01</span><strong>ECHO MASTERS</strong><small>O topo do circuito</small></button><button role="tab" id="stage-tab-open" aria-selected="false" aria-controls="stage-panel" data-stage="open" tabindex="-1"><span>02</span><strong>OPEN CHALLENGE</strong><small>Sua primeira conquista</small></button><button role="tab" id="stage-tab-syndicate" aria-selected="false" aria-controls="stage-panel" data-stage="syndicate" tabindex="-1"><span>03</span><strong>COPA DOS SINDICATOS</strong><small>Defenda suas cores</small></button></div><div id="stage-panel" class="stage-panel" role="tabpanel" tabindex="0" aria-labelledby="stage-tab-masters"></div></div>
+      </div>
+    </section>
+
+    <section class="competitions section wrap" id="competicoes" aria-labelledby="competitions-title">
+      <div class="section-heading"><div><p class="eyebrow red">ESCOLHA COMO FAZER HISTÓRIA</p><h2 id="competitions-title">CADA BATALHA.<br><span>UM NOVO LEGADO.</span></h2></div><div class="competition-heading-side"><p>Do primeiro confronto à consagração.<br>Encontre o evento que tem a sua identidade.</p><div class="view-switch" role="group" aria-label="Visualização das competições"><button class="selected" data-view="cards" aria-pressed="true"><span aria-hidden="true">▦</span> Competições</button><button data-view="calendar" aria-pressed="false"><span aria-hidden="true">▤</span> Agenda</button></div></div></div>
+      <div class="filter-bar"><div class="category-filters" role="group" aria-label="Categoria da competição"><button data-category="all" class="selected" aria-pressed="true">Todas <span>6</span></button><button data-category="Amador" aria-pressed="false">Amador</button><button data-category="Profissional" aria-pressed="false">Profissional</button><button data-category="Sindicatos" aria-pressed="false">Sindicatos</button><button data-category="Especial" aria-pressed="false">Especiais</button></div><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Buscar competição…" aria-label="Buscar competição"></label></div>
+      <div class="filter-secondary"><span id="result-count" role="status" aria-live="polite">6 competições demonstrativas</span><div><button class="favorites-filter" id="favorites-filter" aria-pressed="false">☆ Acompanhando</button><label class="status-select"><span class="sr-only">Status da competição</span><select id="status-filter"><option value="all">Todos os status</option><option>Inscrições abertas</option><option>Em andamento</option><option>Em breve</option><option>Encerrado</option></select></label></div></div>
+      <div id="events" class="event-grid"></div>
+      <div id="calendar" class="calendar-view" hidden><div class="calendar-header"><button id="previous-month" class="icon-button" aria-label="Mês anterior">←</button><h3 id="calendar-month"></h3><button id="next-month" class="icon-button" aria-label="Próximo mês">→</button></div><p class="calendar-note">Datas de início ilustrativas · horários de Brasília (UTC−3)</p><div id="agenda-items"></div></div>
+      <div class="empty" id="empty" hidden><span aria-hidden="true">⌕</span><h3>Nenhuma competição por aqui.</h3><p>Experimente outro nome ou ajuste os filtros.</p><button class="button secondary" id="reset-filters">LIMPAR FILTROS</button></div>
+      <p class="demo-note"><span aria-hidden="true">◇</span> Um gostinho do que vem aí. Competições, equipes, datas e resultados desta prévia são fictícios.</p>
+    </section>
+
+    <section class="circuit section" id="circuito" aria-labelledby="circuit-title"><div class="wrap">
+      <div class="circuit-intro"><div><p class="eyebrow gold">O TROFÉU É SÓ O COMEÇO</p><h2 id="circuit-title">SEU NOME.<br><span>A NOSSA HISTÓRIA.</span></h2></div><p>Uma comunidade que vibra com cada conquista.<br>Entenda os caminhos da disputa e descubra onde começa a sua jornada até o topo.</p></div>
+      <div class="guide-layout" id="formatos"><div class="formats-panel"><div class="panel-heading"><span class="eyebrow">ENTENDA OS FORMATOS</span><span class="tiny">01 — 03</span></div><div class="format-tabs" role="tablist" aria-label="Formato de competição"><button id="tab-knockout" role="tab" data-format="knockout" aria-selected="true" aria-controls="format-content">Mata-mata</button><button id="tab-groups" role="tab" data-format="groups" aria-selected="false" aria-controls="format-content" tabindex="-1">Grupos + finais</button><button id="tab-league" role="tab" data-format="league" aria-selected="false" aria-controls="format-content" tabindex="-1">Liga</button></div><div id="format-content" role="tabpanel" tabindex="0" aria-labelledby="tab-knockout"></div></div>
+      <div class="journey"><p class="eyebrow">SEU CAMINHO NA ARENA</p><ol><li><span>01</span><div><h3>Encontre sua competição</h3><p>Escolha a categoria, confira o formato e veja quem pode participar.</p></div></li><li><span>02</span><div><h3>Entre com sua equipe</h3><p>A futura inscrição usará seu Echo iD. Nesta prévia, experimente acompanhar eventos.</p></div></li><li><span>03</span><div><h3>Viva cada etapa</h3><p>Consulte confrontos, resultados e regras no mesmo lugar.</p></div></li></ol><button class="journey-link" id="circuit-info">CONHECER O CIRCUITO <span aria-hidden="true">↗</span></button></div></div>
+      <div class="circuit-signature"><span class="signature-word">ECHO <b>CIRCUIT</b><sup>™</sup></span><span>FEITO DE COMUNIDADE.<br><b>MOVIDO A COMPETIÇÃO.</b></span></div>
+    </div></section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 Echo Arena · Projeto independente da comunidade</span><span>CENTRAL DO CIRCUITO <i>/</i> V0.3</span><a href="#inicio">VOLTAR AO TOPO ↑</a></footer>
+  <dialog id="opening-dialog" class="opening-dialog" aria-labelledby="opening-title"><img class="opening-backdrop" src="assets/championship-stage.webp" alt="" width="1536" height="1024"><div class="opening-shade"></div><div class="opening-top"><span class="brand-word">ECHO <b>CIRCUIT</b><small>ABERTURA DA TEMPORADA</small></span><button class="icon-button" data-close aria-label="Fechar abertura">×</button></div><div id="opening-scene" class="opening-scene"></div><div class="opening-controls"><div class="opening-progress" aria-hidden="true"><span></span><span></span><span></span></div><div class="opening-control-row"><span id="opening-chapter" class="eyebrow"></span><div><button class="icon-button" id="opening-previous" aria-label="Cena anterior">←</button><button class="opening-pause" id="opening-pause" aria-pressed="false">Pausar</button><button class="icon-button" id="opening-next" aria-label="Próxima cena">→</button></div></div><small>Experiência visual demonstrativa · use as setas para explorar</small></div></dialog>
+  <dialog id="detail-dialog" class="dialog" aria-labelledby="detail-title"><div id="detail-inner"></div></dialog>
+  <dialog id="identity-dialog" class="dialog small-dialog" aria-labelledby="identity-title"><div class="dialog-top"><span class="eyebrow red">SUA IDENTIDADE NA ARENA</span><button class="icon-button" data-close aria-label="Fechar Echo iD">×</button></div><div class="identity-mark" aria-hidden="true">◈</div><h2 id="identity-title">SEU ECHO <span>iD.</span></h2><p>Seu passe para os bastidores da arena. Monte sua equipe, escolha o próximo desafio e acompanhe cada etapa da inscrição.</p><div class="demo-identity"><span>EA</span><div><strong>Jogador da Arena</strong><small>PERFIL DE DEMONSTRAÇÃO</small></div></div><p class="identity-note">Sem e-mail ou senha. Preferências ficam apenas neste navegador. A conexão com o Echo iD real será uma próxima etapa.</p><button class="button primary" id="activate-identity">ENTRAR NA CENTRAL DE DEMONSTRAÇÃO <span>↗</span></button><a class="identity-organizer" href="acesso.html?area=organizar">Explorar organização de eventos <span>DEMO ↗</span></a><button class="text-button" id="clear-preferences">Limpar preferências desta prévia</button></dialog>
+  <dialog id="info-dialog" class="dialog small-dialog" aria-labelledby="info-title"><div class="dialog-top"><span class="eyebrow red">SOBRE O ECHO CIRCUIT</span><button class="icon-button" data-close aria-label="Fechar informações">×</button></div><h2 id="info-title">CADA DISPUTA<br><span>TEM SEU PALCO.</span></h2><p>A área competitiva do Echo Arena reúne quatro caminhos:</p><dl class="info-list"><dt>Amador</dt><dd>Porta de entrada para equipes e jogadores da comunidade.</dd><dt>Profissional</dt><dd>Ligas e temporadas voltadas a organizações competitivas.</dd><dt>Sindicatos</dt><dd>Competições entre os sindicatos do universo de Bullet Echo.</dd><dt>Especiais</dt><dd>Espaço para eventos de parceiros e, quando confirmados, da empresa do jogo.</dd></dl><p class="identity-note">Esta é uma proposta independente. Não há torneio oficial, parceria, premiação ou inscrição real confirmada nesta prévia.</p><button class="button primary" id="info-explore">EXPLORAR COMPETIÇÕES <span>↗</span></button></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

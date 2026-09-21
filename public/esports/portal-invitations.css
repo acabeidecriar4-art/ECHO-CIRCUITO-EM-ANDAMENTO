@@ -1,0 +1,65 @@
+/* Invitation components only. The approved portal.css remains unchanged. */
+.invitation-roster .member-status:before{content:none}
+.invitation-roster .member-status.declined{color:#f0a7b8}
+.invitation-roster .member-response{font-size:12px;line-height:1.65;color:#cbb4c6;overflow-wrap:anywhere}
+.invitation-roster .member-response time{color:#e4cfdd}
+.invitation-roster :is(button,summary):focus-visible,.invitation-roster .roster-slot:focus-visible,.team-invitation-help>summary:focus-visible{outline:2px solid #e4bf83;outline-offset:3px}
+
+/* Keep the approved team grid, fonts, gradients, emblems and card positioning. */
+.team-invitations .member-invitation-details{margin:0}
+.team-invitations .member-invitation-details>summary{font-size:8px;line-height:1.6;color:#baa1c6;cursor:pointer;min-height:31px;padding:7px 0}
+.team-invitations .member-invitation-details[open]{width:100%}
+.team-invitations .member-invitation-details .member-response{margin:8px 0 0}
+.team-invitation-help{margin-top:14px;color:#bda8b7}
+.team-invitation-help>summary{cursor:pointer;font-size:12px;line-height:1.7;padding:7px 0;color:#d1b794}
+.team-invitation-help .demo-callout{font-size:14px;line-height:1.6}
+
+/* Readability changes apply to the registration flow, never to the shell. */
+#portal-content[data-area="inscricao"] .wizard-panel>p{font-size:16px;line-height:1.65}
+#portal-content[data-area="inscricao"] .wizard-panel .demo-callout{font-size:14px;line-height:1.65}
+.invitation-readiness{margin:20px 0;padding:16px;background:#211724;border:1px solid #5d3d4d66}
+.invitation-readiness h3{font:600 24px/1.2 var(--display);color:#e4bf83;margin:0 0 12px}
+.invitation-readiness .portal-progress{height:4px;margin:0 0 12px}
+.invitation-readiness p,.invitation-readiness .readiness-list li{font-size:14px;line-height:1.65;color:#d5bfce}
+.invitation-readiness p{margin:10px 0 0}
+.invitation-readiness .readiness-list{padding-left:18px;margin:10px 0}
+.invitation-readiness .readiness-list li{margin:8px 0;overflow-wrap:anywhere}
+.invitation-readiness .ready-message{color:#aad4b5}
+.invitation-readiness .reserve-guidance{padding-top:12px;border-top:1px solid #5d3d4d66}
+.roster-grid.entry-invitations{grid-template-columns:1fr;gap:14px}
+.entry-invitations .roster-slot{padding:18px;min-height:0}
+.entry-invitations .member-initial{display:none}
+.entry-invitations .member-role{font-size:14px;line-height:1.5;letter-spacing:.04em;margin-bottom:10px;color:#d5b896}
+.entry-invitations .roster-slot h3{font-size:28px;line-height:1.15}
+.entry-invitations .member-status{font-size:16px;line-height:1.5}
+.entry-invitations .member-response{font-size:14px;margin:10px 0 0}
+.entry-invitations .member-actions{gap:10px;margin-top:14px}
+.entry-invitations .member-actions button{font-size:14px;line-height:1.5;min-height:44px;padding:10px 13px;white-space:normal}
+.entry-invitations .empty-slot h3{font-size:24px}
+.entry-invitations .empty-slot p{font-size:14px;line-height:1.65}
+#portal-content[data-area="inscricao"] :is(.wizard-steps li,.wizard-panel .button,.wizard-panel .inline-link){font-size:14px;line-height:1.5;letter-spacing:.02em}
+#portal-content[data-area="inscricao"] .wizard-steps li{gap:7px;padding:12px 8px}
+#portal-content[data-area="inscricao"] .wizard-steps li>span{flex-shrink:0}
+#portal-content[data-area="inscricao"] .wizard-panel :is(.button,.inline-link){min-height:44px;white-space:normal}
+#portal-content[data-area="inscricao"] .wizard-panel :is(.portal-rules,.check-field){font-size:16px;line-height:1.65}
+#portal-content[data-area="inscricao"] .wizard-panel .check-field input{width:22px;height:22px;flex-shrink:0}
+#portal-content[data-area="inscricao"] .wizard-panel :is(input,textarea){font-size:16px;line-height:1.5}
+#portal-content[data-area="inscricao"] .wizard-panel :is(.field>span,.field small,.review-summary>div){font-size:14px;line-height:1.6}
+#portal-content[data-area="inscricao"] .wizard-panel .form-actions{flex-wrap:wrap}
+.roster-summary .summary-player{display:flex;flex-direction:column;gap:4px}
+.roster-summary .summary-player small,.roster-summary .summary-response small{font-size:12px;line-height:1.6;color:#cbb4c6;font-weight:400}
+.roster-summary .summary-response{display:flex;flex-direction:column;gap:4px;font-size:12px;line-height:1.5;color:#aad4b5;max-width:100%;overflow-wrap:anywhere}
+.roster-summary li{gap:16px}
+@media(max-width:760px){
+  .team-invitations .member-actions button{min-height:44px;font-size:12px}
+  .team-invitations .member-status{font-size:14px}
+  .team-invitations .member-invitation-details>summary{min-height:32px;display:flex;align-items:center;font-size:12px}
+  #portal-content[data-area="inscricao"] .wizard-steps li{flex-direction:column;font-size:14px;padding:10px 4px}
+  #portal-content[data-area="inscricao"] .wizard-panel .form-actions>.button{width:100%;padding-inline:12px;text-align:center}
+}
+@media(max-width:560px){
+  .entry-invitations .member-actions{flex-direction:column;align-items:stretch}
+  .entry-invitations .member-actions button{width:100%}
+  .roster-summary li{flex-wrap:wrap;gap:8px}
+  .invitation-readiness{padding:14px}
+}
