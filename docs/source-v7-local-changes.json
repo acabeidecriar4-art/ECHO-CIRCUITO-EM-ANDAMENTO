@@ -20,8 +20,22 @@
       "path": "public/esports/index.html",
       "baseline_sha256": "89934f10217f5c4f2b0ceb72a9b9a0541825b9b5a046fba3d498ba4bb0c4e83f",
       "current_bytes": 15511,
-      "current_sha256": "762017aac7b774ad4269047d36bcad232eb47ec9ca9772a9b877ab8473b949e9",
-      "reason": "Preload WOFF2 instead of TTF for faster first paint (woff2 ~32KB vs ttf ~85KB)."
+      "current_sha256": "ce6ca780773c98e6ec9dae2106d5bc1d71daa18d753d1af462aae6c05d52e129",
+      "reason": "Preload WOFF2 (32KB vs 85KB) + novo conteúdo: 7ª competição Troféu Continuidade (7 comps) e bump data.js v4."
+    },
+    {
+      "path": "public/esports/acesso.html",
+      "baseline_sha256": "7b9b2a54a6f935f26c47cf81e8d28899ed561eda035aa480112a935f22334a16",
+      "current_bytes": 5488,
+      "current_sha256": "78d7a58898008ae0e787eced9a2c1d974508c3e65d0db1f3d7937afb059480ee",
+      "reason": "Bump data.js?v=4 para 7ª competição; mantém portal compatível com nova data."
+    },
+    {
+      "path": "public/esports/data.js",
+      "baseline_sha256": "be929aa44819c691f3b4dfb972368bf6c6ef0a94e27f3e3b05f56981224da559",
+      "current_bytes": 4401,
+      "current_sha256": "dfbb40486f64dd0e6e339da4e89f9ba7c7f958c6cd5a4e4833195b12d2ed0b7d",
+      "reason": "Novo conteúdo demonstrativo: adiciona Troféu Continuidade (Especial, 16 equipes, 2026-11-15) celebrando WOFF2 e fluxo inscrição demonstrativa."
     }
   ],
   "additions": [

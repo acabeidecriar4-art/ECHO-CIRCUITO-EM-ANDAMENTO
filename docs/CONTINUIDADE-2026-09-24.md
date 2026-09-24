@@ -68,4 +68,39 @@ npm run verify && npm run smoke:builds
 
 ---
 
+---
+
+## Continuidade — parte 2 · Novo conteúdo demonstrativo (mesmo dia)
+
+**Seleção do usuário:** `Novo conteúdo demonstrativo` · **versão:** `0.7.2-beta`
+
+### 4 — Nova competição: Troféu Continuidade · Edição WOFF2
+
+A pedido de “novo conteúdo demonstrativo”, o catálogo `public/esports/data.js` passa de **6 para 7 competições** sem alterar regras de negócio:
+
+- `continuity` — **Troféu Continuidade · Edição WOFF2** — `Especial` · `Inscrições abertas` · `Mata-mata` · 16 equipes
+  - **Data:** 2026-11-15 20:00 (Brasília) — preenche o calendário de novembro, mantendo 3 “Inscrições abertas” simultâneas em setembro/outubro/novembro
+  - **Acabamento:** verde `#8be9a0` / glow `#1a6b3a55` — paleta distinta das 6 originais, sinalizando evolução
+  - **Poster:** `CONTINUIDADE<br><span>TROFÉU</span>` · símbolo `C` · temporada `EDIÇÃO 02`
+  - **Descrição:** celebra a otimização WOFF2 (60% menor) e convida a testar criação de equipe → inscrição demonstrativa — reforça “sem premiação real” e caráter ilustrativo
+  - **Acessos:** `?competicao=continuity` direto; aparece em filtros (Todas 7, Especiais 3, Inscrições abertas 3), busca sem acento, agenda mensal e opção de “Acompanhando”
+
+**Ajustes correlatos:**
+
+- `public/esports/index.html` e `acesso.html`: `data.js?v=3 → v=4` (cache-bust) e contadores `6 → 7` (“Todas <span>7</span>” + “7 competições demonstrativas”)
+- `docs/source-v7-local-changes.json`: 5 patches agora — `portal-store.js`, `fonts.css`, `index.html` (WOFF2 + 7 comps), `acesso.html` (bump v4), `data.js` (nova competição)
+  - Verificação: `402 preservados + 5 patches + 741 refs` verde; `build isolado` agora com 7ª competição e ainda ~1.5 MB
+
+### Verificação do novo conteúdo
+
+```sh
+npm run verify      # 225 JS/MJS + 29 inline, 402+5 patches, 741 refs — ok
+npm test            # 10/10 — portal-store readiness e serve
+npm run build:esports && npm run smoke:builds  # dist-esports 29→30? 29 arquivos (data.js já existente) — ok
+curl /esports/data.js | grep continuity           # 1
+curl /esports/ | grep "Todas <span>7"             # ok
+```
+
+O fluxo demonstrativo continua idêntico: criar equipe (3 titulares, reserva opcional), simular aceite e inscrever em qualquer das 3 competições abertas (`open`, `syndicate`, `continuity`). A nova competição não exige sindicato (categoria Especial) e usa as mesmas validações.
+
 *Continuidade sem regressão. Próxima evolução recomendada: triagem axe + conversão de imagens/championship-stage para AVIF/WEBP otimizado e revisão do inventário de terceiros (`THIRD-PARTY-NOTICES.md`).*
