@@ -1,0 +1,11 @@
+# Artefatos regeneráveis do build
+/dist/
+/dist-esports/
+
+# Dependências e resultados locais de teste
+/node_modules/
+/coverage/
+/test-results/
+/playwright-report/
+/artifacts/
+.DS_Store

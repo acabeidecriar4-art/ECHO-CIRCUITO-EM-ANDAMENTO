@@ -1,12 +1,13 @@
 // Browser-level acceptance journeys for the local access prototype.
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
-const root=path.join(__dirname,'public'),out=process.env.ECHO_QA_OUTPUT||'/tmp/echo-portal-qa';fs.mkdirSync(out,{recursive:true});
+const root=path.join(__dirname,'public'),out=process.env.ECHO_PORTAL_QA_OUTPUT||process.env.ECHO_QA_OUTPUT||'/tmp/echo-portal-qa';fs.mkdirSync(out,{recursive:true});
 const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.ttf':'font/ttf','.svg':'image/svg+xml','.webp':'image/webp'};
 const server=http.createServer((req,res)=>{let requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(requested.endsWith('/'))requested+='index.html';const file=path.join(root,requested);if(!file.startsWith(root)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file));});
 (async()=>{
   await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port,portal=base+'/esports/acesso.html';
-  const browser=await chromium.launch({headless:true,executablePath:process.env.ECHO_CHROMIUM_EXECUTABLE||'/tmp/echo-chromium-browser',args:['--disable-gpu','--disable-dev-shm-usage']});
+  let options={headless:true};if(process.env.ECHO_CHROMIUM_EXECUTABLE){options={...options,executablePath:process.env.ECHO_CHROMIUM_EXECUTABLE,args:['--disable-gpu','--disable-dev-shm-usage']};}else if(process.env.ECHO_CHROMIUM_MODULE){const {default:c}=await import(process.env.ECHO_CHROMIUM_MODULE);options={...options,executablePath:await c.executablePath(),args:c.args};}
+  const browser=await chromium.launch(options);
   const report={browser:await browser.version(),checkedAt:new Date().toISOString(),viewports:[],journeys:[]};
   try{
     for(const [name,width,height] of [['desktop',1440,1000],['tablet',820,1180],['tablet-landscape',1180,820],['mobile',390,844],['small-mobile',320,740]]){
@@ -23,7 +24,7 @@ const server=http.createServer((req,res)=>{let requested=decodeURIComponent(new 
       await page.fill('[name="nick"]','raven prime');await submit('invite');assert.match(await page.locator('.form-error').innerText(),/já está no elenco/);
       await page.fill('[name="nick"]','Shadow');await submit('invite');assert.equal(await page.locator('.member-status.pending').count(),1);
       await go('inscricao','&evento=open');assert.match(await page.locator('.readiness-list').innerText(),/aguardando resposta/);assert.equal(await page.locator('[data-action="wizard-next"]').count(),0);
-      await go('equipe');await act('accept-member');await act('fill-roster');assert.equal(await page.locator('.member-status.pending').count(),0);assert.match(await page.locator('.invitation-readiness').innerText(),/3 de 3/);await check('team',true);
+      await go('equipe');await act('accept-member');await act('fill-roster');assert.equal(await page.locator('.member-status.pending').count(),0);await page.locator('.team-invitation-help summary').click();assert.match(await page.locator('.invitation-readiness').innerText(),/3 de 3/);await check('team',true);
       await go('inscricao','&evento=open');await check('entry-team',true);await act('wizard-next');await submit('wizard-rules');assert.equal(await page.locator('.wizard-steps .current').innerText(),'2\nRegulamento');await page.check('[name="accepted"]');await submit('wizard-rules');await page.fill('[name="note"]','Disponíveis para o horário de exemplo.');await check('entry-review',true);await submit('register');await page.waitForURL(u=>u.searchParams.has('registro'));assert.match(await page.locator('.portal-heading .portal-status').innerText(),/Em análise/);
       const registrationURL=page.url();await check('registration',true);await page.reload({waitUntil:'networkidle'});assert.match(await page.locator('.roster-summary').innerText(),/Crimson Wolves/);
       await go('inscricao','&evento=open');assert.match(await page.locator('.portal-empty').innerText(),/já está no circuito/);
@@ -46,4 +47,4 @@ const server=http.createServer((req,res)=>{let requested=decodeURIComponent(new 
     report.journeys=['Player identity and reload persistence','Team creation, duplicate player validation, pending invites and simulated acceptance','Registration readiness, rules acknowledgement and review','Duplicate registration prevention','Organizer approval and rejection with required reason','Check-in, cancellation confirmation and Escape','Submitted roster remains unchanged after profile edits','Syndicate eligibility requirement','Draft creation, editing, preview and deletion','User content escapes in all draft previews','Favorites shared with landing page','Mobile navigation and browser history','Desktop/tablet/mobile layout, zero page overflow','Storage denied: session-only mode with visible notice'];
     fs.writeFileSync(path.join(out,'validation.json'),JSON.stringify(report,null,2));console.log('Portal acceptance complete.');
   }finally{await browser.close();server.close();}
-})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
+})().catch(e=>{const summary=String(e?.message||e).split(/\r?\n/,1)[0].replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A');console.error('::error title=Portal browser QA::'+summary);console.error(e);server.close();process.exitCode=1;});

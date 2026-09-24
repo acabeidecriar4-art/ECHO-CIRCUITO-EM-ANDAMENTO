@@ -5,7 +5,13 @@ import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url';
 
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const root = await realpath(resolve(project, process.argv.includes('--dist') ? 'dist' : 'public'));
+const args = new Set(process.argv.slice(2));
+if (args.has('--dist') && args.has('--esports-dist')) {
+  throw new Error('Escolha apenas um modo de prévia.');
+}
+const standaloneEsports = args.has('--esports-dist');
+const contentDir = standaloneEsports ? 'dist-esports' : args.has('--dist') ? 'dist' : 'public';
+const root = await realpath(resolve(project, contentDir));
 const host = process.env.ECHO_HOST || '127.0.0.1';
 const port = Number(process.env.PORT || '3030');
 if (!Number.isInteger(port) || port < 0 || port > 65535) throw new Error('PORT inválida.');
@@ -16,7 +22,8 @@ const mime = {
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
   '.webp': 'image/webp', '.gif': 'image/gif', '.ico': 'image/x-icon',
   '.ttf': 'font/ttf', '.woff': 'font/woff', '.woff2': 'font/woff2',
-  '.mp4': 'video/mp4', '.webm': 'video/webm', '.wasm': 'application/wasm',
+  '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg', '.mp4': 'video/mp4',
+  '.webm': 'video/webm', '.wasm': 'application/wasm',
 };
 function inside(path) {
   const rel = relative(root, path);
@@ -58,8 +65,14 @@ const server = createServer(async (req, res) => {
 });
 server.listen(port, host, () => {
   const actualPort = server.address().port;
-  console.log(`Echo Circuit: http://${host}:${actualPort}/esports/`);
-  console.log(`Portal: http://${host}:${actualPort}/esports/acesso.html`);
+  const base = `http://${host}:${actualPort}`;
+  if (standaloneEsports) {
+    console.log(`Echo Circuit E-Sports: ${base}/`);
+    console.log(`Central: ${base}/acesso.html`);
+  } else {
+    console.log(`Echo Circuit E-Sports: ${base}/esports/`);
+    console.log(`Central: ${base}/esports/acesso.html`);
+  }
 });
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });
 for (const signal of ['SIGINT', 'SIGTERM']) process.on(signal, () => server.close());

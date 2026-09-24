@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "baseline": "source-v7-manifest.json",
+  "changes": [
+    {
+      "path": "public/esports/portal-store.js",
+      "baseline_sha256": "e6393e576312b4da4c8e4b254f42bbdc3726a3f20434a06878f6e496106d1673",
+      "current_bytes": 15348,
+      "current_sha256": "40a697dcf7e18080278140f077d7c9fc41b2a0af339468eb620a28e74f1b6afb",
+      "reason": "Reject impossible calendar dates in local event drafts and normalize invalid stored dates."
+    }
+  ]
+}
