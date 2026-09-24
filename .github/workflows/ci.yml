@@ -22,11 +22,17 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Verify static assets and unit tests
         run: npm run verify
-      - name: Run browser acceptance and accessibility audit
-        run: npm run test:browser
+      - name: Run E-Sports browser journeys
+        run: node validate-esports.cjs
         env:
           ECHO_ESPORTS_QA_OUTPUT: artifacts/esports
+      - name: Run portal browser journeys
+        run: node validate-portal.cjs
+        env:
           ECHO_PORTAL_QA_OUTPUT: artifacts/portal
+      - name: Run accessibility audit
+        run: node validate-accessibility.cjs
+        env:
           ECHO_A11Y_OUTPUT: artifacts/accessibility
       - name: Upload browser QA reports and screenshots
         if: always()

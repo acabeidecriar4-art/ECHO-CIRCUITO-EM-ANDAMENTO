@@ -162,6 +162,9 @@ function summarizeViolation(violation) {
     if (server.exitCode === null) await new Promise(resolve => server.once('exit', resolve));
   }
 })().catch(error => {
+  const summary = String(error?.message || error).split(/\r?\n/, 1)[0]
+    .replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+  console.error(`::error title=Accessibility audit::${summary}`);
   console.error(error);
   process.exitCode = 1;
 });
