@@ -53,11 +53,11 @@ Não há neste repositório migrations SQL, políticas RLS, configuração de fu
 
 ### P2 — Suíte browser adicionada; execução local bloqueada pelo ambiente
 
-Playwright e axe-core estão declarados e fixados no lockfile. `npm run test:browser` combina as jornadas existentes de circuito e central com uma auditoria axe em desktop e mobile, incluindo o diálogo de identidade. O workflow instala Chromium, executa essa suíte e guarda relatórios/capturas como artefatos. A análise axe não bloqueia a CI por violações até que seu baseline seja revisado; `A11Y_STRICT=1` permite ativar o limite para violações sérias/críticas.
+Playwright e axe-core estão declarados e fixados no lockfile. `npm run test:browser` combina as jornadas existentes de circuito e central com uma auditoria axe em desktop e mobile, incluindo perfil, formulário de rascunho e o diálogo de identidade. O workflow instala Chromium, executa essa suíte e guarda relatórios/capturas como artefatos. A análise axe não bloqueia a CI por violações até que seu baseline seja revisado; `A11Y_STRICT=1` permite ativar o limite para violações sérias/críticas.
 
-Não consegui executar os navegadores neste container: o download Playwright falhou com `ECONNRESET` para `cdn.playwright.dev`; a instalação de bibliotecas do Chromium via apt também não alcançou os repositórios Debian. O binário portátil tentado exigia `libnspr4`, indisponível aqui. Portanto, a suíte e a nova auditoria estão implementadas, mas **não foram executadas nesta sessão**; os registros JSON antigos de navegador continuam sendo apenas resultados de **14/09/2026**.
+Não consegui executar os navegadores diretamente neste container: o download Playwright falhou com `ECONNRESET` para `cdn.playwright.dev`; a instalação de bibliotecas do Chromium via apt também não alcançou os repositórios Debian. O binário portátil tentado exigia `libnspr4`, indisponível aqui. A suíte foi então executada no GitHub Actions após a integração à `main` (execução `36032424356`): jornadas de circuito e central, auditoria axe, os dois builds e smoke tests passaram; os relatórios/capturas foram publicados como artefato. A auditoria axe segue em modo informativo: o resultado confirma que o scanner rodou, não que não existam violações. Os JSONs de validação anteriores continuam sendo apenas resultados históricos de **14/09/2026**.
 
-**Próxima melhoria:** confirmar a primeira execução do workflow, revisar o artefato axe e corrigir achados sérios/críticos antes de ativar o modo estrito. A suíte automatizada não substitui testes em aparelhos ou Safari nativo; validação sem navegador também não cobre toda a semântica HTML/CSS.
+**Próxima melhoria:** revisar o artefato axe da execução no GitHub Actions e corrigir achados sérios/críticos antes de ativar o modo estrito. A suíte automatizada não substitui testes em aparelhos ou Safari nativo; validação sem navegador também não cobre toda a semântica HTML/CSS.
 
 ### P2 — Licenças de terceiros ainda precisam de confirmação
 
@@ -84,14 +84,14 @@ Foi criado `docs/THIRD-PARTY-NOTICES.md`, com inventário técnico de fontes Bar
 | `npm run smoke:builds` | Passou; build completo respondeu em `/esports/`, na central e na rota histórica `/admin/`; build isolado respondeu em `/` e `/acesso.html` e retornou 404 em `/admin/`. |
 | JavaScript inline executável em HTML | 29 blocos passaram na verificação sintática atual; import maps, JSON e scripts externos foram excluídos. |
 | Manifesto de migração | 407 caminhos conferem; 406 hashes de origem intactas e 1 patch local validado por hash atual. Nenhum arquivo sem registro. |
-| Playwright, regressão visual e fluxos no browser | Dependências declaradas e CI configurada; execução local não foi possível porque os downloads do browser/dependências do sistema falharam por restrições de rede. Aguardando primeiro resultado no CI. |
-| axe-core, WCAG 2.1 A/AA (circuito, central e diálogo; desktop/mobile) | Script e relatório implementados, mas não executados localmente. CI guarda o baseline como artefato e não falha por violações até revisão. |
+| Playwright, regressão visual e fluxos no browser | Execução GitHub Actions `36032424356` na `main` passou; jornadas do circuito e da central, builds e smoke tests aprovados. Execução local continua bloqueada pela rede. |
+| axe-core, WCAG 2.1 A/AA (circuito, central, perfil, rascunho e diálogo; desktop/mobile) | Scanner executado no CI e relatório carregado como artefato. Modo informativo; violações ainda precisam ser triadas manualmente. |
 | RLS, RPCs, cabeçalhos da hospedagem e segurança do backend | Não auditáveis com os arquivos presentes; exigem acesso ao ambiente/configuração remota. |
 
 ## Próximas ações
 
 1. **Antes de uma publicação pública:** verificar RLS/RPCs no Supabase e aprovar as licenças do inventário; hospedar `dist-esports/` se o objetivo for somente o circuito.
-2. **Qualidade de experiência:** confirmar Playwright/Chromium no primeiro CI, revisar o artefato axe e triagem de achados; depois testar também em dispositivos reais e Safari.
+2. **Qualidade de experiência:** revisar o artefato axe do CI, triagem dos achados e correções; depois testar também em dispositivos reais e Safari.
 3. **Proveniência:** localizar e importar a fonte Git histórica somente se for necessário recuperar o histórico que não veio neste checkout.
 
 ## Limitações
