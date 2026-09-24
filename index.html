@@ -1,16 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=./public/esports/">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Echo Circuit</title>
-  <script>
-    location.replace(new URL('./public/esports/', location.href).href);
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO Primário -->
+  <title>Echo Circuit | Torneios & Campeonatos de eSports</title>
+  <meta name="title" content="Echo Circuit | Torneios & Campeonatos de eSports">
+  <meta name="description" content="Participe dos torneios da Echo Circuit. Disputas competitivas, premiações em dinheiro e transmissões ao vivo. Inscreva sua equipe!">
+  <meta name="keywords" content="esports, torneio, campeonato, valorant, cs2, lol, echo circuit, games">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0d0e15">
+
+  <!-- Open Graph / Discord / WhatsApp / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://acabeidecriar4-art.github.io/ECHO-CIRCUITO-EM-ANDAMENTO/">
+  <meta property="og:title" content="⚡ Echo Circuit — Inscrições Abertas">
+  <meta property="og:description" content="Garanta a vaga do seu time no próximo torneio. Premiação e transmissão ao vivo!">
+  <!-- Coloque a imagem de banner na pasta assets e mantenha o nome abaixo -->
+  <meta property="og:image" content="https://acabeidecriar4-art.github.io/ECHO-CIRCUITO-EM-ANDAMENTO/assets/banner-preview.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://acabeidecriar4-art.github.io/ECHO-CIRCUITO-EM-ANDAMENTO/">
+  <meta name="twitter:title" content="⚡ Echo Circuit — Inscrições Abertas">
+  <meta name="twitter:description" content="Participe dos torneios da Echo Circuit. Inscreva seu time agora!">
+  <meta name="twitter:image" content="https://acabeidecriar4-art.github.io/ECHO-CIRCUITO-EM-ANDAMENTO/assets/banner-preview.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS (Verifique o nome correto do seu arquivo CSS) -->
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <p>Abrindo o <a href="./public/esports/">Echo Circuit</a>…</p>
+
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="./" class="logo">ECHO<span>CIRCUIT</span></a>
+      <nav class="nav-links">
+        <a href="#torneios">Torneios</a>
+        <a href="#regras">Regulamento</a>
+        <a href="#premiacao">Premiação</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#inscricao" class="btn-primary">INSCREVER TIME</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="badge-status">🟢 INSCRIÇÕES ABERTAS — TEMPORADA 2025</div>
+      <h1 class="hero-title">O CIRCUITO ONDE LENDAS SÃO CRIADAS</h1>
+      <p class="hero-description">
+        Reúna sua lineup, dispute contra os melhores times do cenário e concorra a premiações em dinheiro com transmissão oficial ao vivo.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="#inscricao" class="btn-primary btn-large">GARANTIR VAGA</a>
+        <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-large">
+          ENTRAR NO DISCORD
+        </a>
+      </div>
+
+      <!-- Quick Info / Métricas do Torneio -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">R$ 2.500+</span>
+          <span class="stat-label">Premiação Total</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">32</span>
+          <span class="stat-label">Vagas por Etapa</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100% Online</span>
+          <span class="stat-label">Transmissão Twitch/YT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FORMULÁRIO DE INSCRIÇÃO ================= -->
+  <section id="inscricao" class="section-inscricao">
+    <div class="container">
+      <div class="section-header">
+        <h2>Inscrição da Equipe</h2>
+        <p>Preencha os dados do capitão. As confirmações de chaveamento são enviadas via Discord.</p>
+      </div>
+
+      <!-- Formulário com envio seguro (Substitua SEU_ENDPOINT pelo do Formspree) -->
+      <form id="formInscricao" action="https://formspree.io/f/SEU_ENDPOINT_AQUI" method="POST" class="form-container">
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="team_name">Nome da Equipe *</label>
+            <input type="text" id="team_name" name="team_name" placeholder="Ex: Echo Wolves Esports" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tag">Tag do Time (Sigla) *</label>
+            <input type="text" id="tag" name="tag" placeholder="Ex: ECW" maxlength="5" required>
+          </div>
+
+          <div class="form-group">
+            <label for="captain_name">Nome do Capitão *</label>
+            <input type="text" id="captain_name" name="captain_name" placeholder="Nome completo ou Nickname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="captain_discord">Discord do Capitão *</label>
+            <input type="text" id="captain_discord" name="captain_discord" placeholder="Ex: capitão#1234 ou @capitao" required>
+          </div>
+
+          <div class="form-group">
+            <label for="captain_email">E-mail de Contato *</label>
+            <input type="email" id="captain_email" name="captain_email" placeholder="email@exemplo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="captain_whatsapp">WhatsApp (com DDD) *</label>
+            <input type="tel" id="captain_whatsapp" name="captain_whatsapp" placeholder="(11) 99999-9999" required>
+          </div>
+        </div>
+
+        <div class="form-terms">
+          <label>
+            <input type="checkbox" required> Declaro que li e concordo com o <a href="#regras">Regulamento Oficial</a> do torneio.
+          </label>
+        </div>
+
+        <button type="submit" id="btnSubmit" class="btn-primary btn-block">CONFIRMAR INSCRIÇÃO</button>
+        <div id="formFeedback" class="form-feedback" style="display: none;"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Echo Circuit. Todos os direitos reservados.</p>
+      <div class="footer-socials">
+        <a href="https://discord.gg/" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://twitch.tv/" target="_blank" rel="noopener noreferrer">Twitch</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JS / INTEGRAÇÃO FORMULÁRIO ================= -->
+  <script>
+    const form = document.getElementById('formInscricao');
+    const feedback = document.getElementById('formFeedback');
+    const btn = document.getElementById('btnSubmit');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.innerText = 'Enviando inscrição...';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          feedback.style.display = 'block';
+          feedback.style.color = '#00ff88';
+          feedback.innerText = '✅ Inscrição enviada com sucesso! Entre no nosso Discord para confirmar sua vaga.';
+          form.reset();
+        } else {
+          throw new Error('Falha no envio');
+        }
+      } catch (err) {
+        feedback.style.display = 'block';
+        feedback.style.color = '#ff4444';
+        feedback.innerText = '❌ Erro ao enviar. Verifique sua conexão ou chame a moderação no Discord.';
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'CONFIRMAR INSCRIÇÃO';
+      }
+    });
+  </script>
 </body>
 </html>
