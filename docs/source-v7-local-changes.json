@@ -8,6 +8,71 @@
       "current_bytes": 15348,
       "current_sha256": "40a697dcf7e18080278140f077d7c9fc41b2a0af339468eb620a28e74f1b6afb",
       "reason": "Reject impossible calendar dates in local event drafts and normalize invalid stored dates."
+    },
+    {
+      "path": "public/esports/assets/fonts.css",
+      "baseline_sha256": "4d21bba617401a8ddae00d59408cbfee2422cb623e1d07a991a8a7234fef9dfe",
+      "current_bytes": 1449,
+      "current_sha256": "7a23cae632cd9aa99c88e8de50f01448ebe11673943d0f8eef208ac813d5d4ea",
+      "reason": "Performance: add WOFF2 first (with TTF fallback) for 60% font payload reduction; keep TTF for legacy. Fonts display swap already present."
+    },
+    {
+      "path": "public/esports/index.html",
+      "baseline_sha256": "89934f10217f5c4f2b0ceb72a9b9a0541825b9b5a046fba3d498ba4bb0c4e83f",
+      "current_bytes": 15511,
+      "current_sha256": "762017aac7b774ad4269047d36bcad232eb47ec9ca9772a9b877ab8473b949e9",
+      "reason": "Preload WOFF2 instead of TTF for faster first paint (woff2 ~32KB vs ttf ~85KB)."
+    }
+  ],
+  "additions": [
+    {
+      "path": "public/esports/assets/barlow-400.woff2",
+      "bytes": 32832,
+      "sha256": "18ac14c4f8a622b4af434e49f6505eb928a329ad69e80bde6bb3e5034f394c67",
+      "source": "public/esports/assets/barlow-400.ttf",
+      "reason": "WOFF2 optimization derived from TTF via ttf2woff2; 60% smaller, same glyphs."
+    },
+    {
+      "path": "public/esports/assets/barlow-500.woff2",
+      "bytes": 32776,
+      "sha256": "8723ee4cc2de2b2880a71b9584d5e952df6fd81539aa98955fed7abb8592a5a8",
+      "source": "public/esports/assets/barlow-500.ttf",
+      "reason": "WOFF2 optimization derived from TTF."
+    },
+    {
+      "path": "public/esports/assets/barlow-600.woff2",
+      "bytes": 33880,
+      "sha256": "c8bf5e667611f0e7ebd9274fe92e65f7d2bd2c48f9c010e58ce3dfd1e27a2d9d",
+      "source": "public/esports/assets/barlow-600.ttf",
+      "reason": "WOFF2 optimization derived from TTF."
+    },
+    {
+      "path": "public/esports/assets/barlow-condensed-600.woff2",
+      "bytes": 33456,
+      "sha256": "00ff5c029dab2ec39ed3089b4b58350453fb8e6bbd370fbd5b868a429448516e",
+      "source": "public/esports/assets/barlow-condensed-600.ttf",
+      "reason": "WOFF2 optimization derived from TTF."
+    },
+    {
+      "path": "public/esports/assets/barlow-condensed-700.woff2",
+      "bytes": 33588,
+      "sha256": "2a683e791b4116511fcab0aea2579aed3612604903f8b5c8fc13a5061b120314",
+      "source": "public/esports/assets/barlow-condensed-700.ttf",
+      "reason": "WOFF2 optimization derived from TTF."
+    },
+    {
+      "path": "public/esports/assets/barlow-condensed-800.woff2",
+      "bytes": 33712,
+      "sha256": "b753e728399967d22481da551a637c0f274bcdfa655bb6d822dc8265e3c1d780",
+      "source": "public/esports/assets/barlow-condensed-800.ttf",
+      "reason": "WOFF2 optimization derived from TTF; preloaded in index.html."
+    },
+    {
+      "path": "public/esports/assets/barlow-condensed-900.woff2",
+      "bytes": 33160,
+      "sha256": "5121964f0c6fe532fcef2443643a154fc4cd4fbe4ed94cddef1abd94ae7f63a2",
+      "source": "public/esports/assets/barlow-condensed-900.ttf",
+      "reason": "WOFF2 optimization derived from TTF."
     }
   ]
 }

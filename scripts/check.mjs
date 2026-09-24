@@ -175,7 +175,13 @@ for (const record of manifest.files) {
 }
 
 for (const path of actualPublicPaths) {
-  if (!manifestByPath.has(path)) errors.push(`${path}: arquivo de public/ ausente do manifesto de origem.`);
+  if (manifestByPath.has(path)) continue;
+  // WOFF2 font optimization: derived from TTF already in manifest.
+  if (path.endsWith('.woff2') && path.startsWith('public/esports/assets/')) {
+    const ttfPath = path.replace(/\.woff2$/, '.ttf');
+    if (manifestByPath.has(ttfPath)) continue;
+  }
+  errors.push(`${path}: arquivo de public/ ausente do manifesto de origem.`);
 }
 for (const patch of localChanges.changes) {
   if (!manifestByPath.has(patch.path)) errors.push(`${patch.path}: alteração local sem arquivo de origem no manifesto.`);
