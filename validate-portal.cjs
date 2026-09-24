@@ -1,12 +1,13 @@
 // Browser-level acceptance journeys for the local access prototype.
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
 const {chromium}=require('playwright');
-const root=path.join(__dirname,'public'),out=process.env.ECHO_QA_OUTPUT||'/tmp/echo-portal-qa';fs.mkdirSync(out,{recursive:true});
+const root=path.join(__dirname,'public'),out=process.env.ECHO_PORTAL_QA_OUTPUT||process.env.ECHO_QA_OUTPUT||'/tmp/echo-portal-qa';fs.mkdirSync(out,{recursive:true});
 const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.ttf':'font/ttf','.svg':'image/svg+xml','.webp':'image/webp'};
 const server=http.createServer((req,res)=>{let requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(requested.endsWith('/'))requested+='index.html';const file=path.join(root,requested);if(!file.startsWith(root)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file));});
 (async()=>{
   await new Promise(r=>server.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+server.address().port,portal=base+'/esports/acesso.html';
-  const browser=await chromium.launch({headless:true,executablePath:process.env.ECHO_CHROMIUM_EXECUTABLE||'/tmp/echo-chromium-browser',args:['--disable-gpu','--disable-dev-shm-usage']});
+  let options={headless:true};if(process.env.ECHO_CHROMIUM_EXECUTABLE){options={...options,executablePath:process.env.ECHO_CHROMIUM_EXECUTABLE,args:['--disable-gpu','--disable-dev-shm-usage']};}else if(process.env.ECHO_CHROMIUM_MODULE){const {default:c}=await import(process.env.ECHO_CHROMIUM_MODULE);options={...options,executablePath:await c.executablePath(),args:c.args};}
+  const browser=await chromium.launch(options);
   const report={browser:await browser.version(),checkedAt:new Date().toISOString(),viewports:[],journeys:[]};
   try{
     for(const [name,width,height] of [['desktop',1440,1000],['tablet',820,1180],['tablet-landscape',1180,820],['mobile',390,844],['small-mobile',320,740]]){

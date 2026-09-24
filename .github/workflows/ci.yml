@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install project dependencies
+        run: npm ci
+      - name: Install Chromium for browser QA
+        run: npx playwright install --with-deps chromium
+      - name: Verify static assets and unit tests
+        run: npm run verify
+      - name: Run browser acceptance and accessibility audit
+        run: npm run test:browser
+        env:
+          ECHO_ESPORTS_QA_OUTPUT: artifacts/esports
+          ECHO_PORTAL_QA_OUTPUT: artifacts/portal
+          ECHO_A11Y_OUTPUT: artifacts/accessibility
+      - name: Upload browser QA reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-qa-reports
+          path: artifacts/
+          if-no-files-found: ignore
+      - name: Build complete preserved site
+        run: npm run build
+      - name: Build standalone E-Sports site
+        run: npm run build:esports
+      - name: Smoke-test both build previews
+        run: npm run smoke:builds

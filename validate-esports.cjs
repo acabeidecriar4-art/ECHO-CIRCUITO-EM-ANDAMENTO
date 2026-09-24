@@ -5,7 +5,7 @@ const http=require('node:http');
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const root=path.join(__dirname,'public');
-const out=process.env.ECHO_QA_OUTPUT||'/tmp/echo-circuit-qa';
+const out=process.env.ECHO_ESPORTS_QA_OUTPUT||process.env.ECHO_QA_OUTPUT||'/tmp/echo-circuit-qa';
 fs.mkdirSync(out,{recursive:true});
 const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.ttf':'font/ttf','.svg':'image/svg+xml','.webp':'image/webp','.png':'image/png','.jpg':'image/jpeg'};
 const server=http.createServer((req,res)=>{let requested=decodeURIComponent(new URL(req.url,'http://localhost').pathname);let base=root;if(requested.startsWith('/reference/')){base='/tmp/echo-reference-local';requested=requested.slice('/reference'.length);}if(requested.endsWith('/'))requested+='index.html';const file=path.join(base,requested);if(!file.startsWith(base)||!fs.existsSync(file)||fs.statSync(file).isDirectory()){res.writeHead(404);res.end('Not found');return;}res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(fs.readFileSync(file));});

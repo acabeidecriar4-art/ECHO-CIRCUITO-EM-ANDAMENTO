@@ -6,12 +6,22 @@
     "dev": "node scripts/serve.mjs",
     "start": "node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs --dist",
+    "preview:esports": "node scripts/serve.mjs --esports-dist",
     "check": "node scripts/check.mjs",
-    "build": "node build.mjs"
+    "test": "node --test",
+    "test:browser": "node validate-esports.cjs && node validate-portal.cjs && node validate-accessibility.cjs",
+    "verify": "npm run check && npm test",
+    "smoke:builds": "node scripts/smoke-builds.mjs",
+    "build": "node build.mjs",
+    "build:esports": "node build.mjs --esports"
   },
   "displayName": "Echo Circuit",
   "description": "Echo Circuit — protótipo independente de E-Sports do Echo Arena",
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "playwright": "1.63.0"
   }
 }

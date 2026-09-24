@@ -37,14 +37,14 @@ A experiência aprovada da página de evento foi preservada. O novo `/esports/ac
 
 O site continua sem autenticação, permissões ou inscrições reais. O papel “Organizador demo” é uma simulação explícita. Nenhum convite é enviado a outra pessoa. Eventos criados aqui permanecem como rascunhos locais, sem aparecer no catálogo. O portal oferece um aviso de alterações em outra aba e um modo de sessão quando o navegador bloqueia o armazenamento.
 
-### Estrutura para integração posterior com o GitLab
+### Estrutura para integração posterior com o backend oficial
 
 - `data.js`: catálogo único de competições ilustrativas, usado pela página e pelo portal.
 - `portal-store.js`: repositório local isolado; concentra validações e transições de estado, sem dependência de Sites.
 - `portal.js`: rotas, formulários, prévias e componentes das áreas de acesso.
 - `portal.css` / `acesso.html`: apresentação responsiva, com fontes e imagens locais.
 
-A portabilidade do front-end é direta: HTML, CSS e JavaScript, sem runtime proprietário. A integração oficial ainda requer revisar a estrutura e as regras do repositório GitLab, substituir o armazenamento local por APIs, conectar o Echo iD e aplicar autorização no servidor para funções de capitão/organizador. O protótipo não deve ser usado como controle de acesso de produção. Dados de avaliação deste navegador não são migrados automaticamente.
+A portabilidade do front-end é direta: HTML, CSS e JavaScript, sem runtime proprietário. Uma integração oficial ainda requer revisar a arquitetura e as regras do backend escolhido, substituir o armazenamento local por APIs, conectar o Echo iD e aplicar autorização no servidor para funções de capitão/organizador. O protótipo não deve ser usado como controle de acesso de produção. Dados de avaliação deste navegador não são migrados automaticamente.
 
 ### Validação dos acessos
 
@@ -72,6 +72,6 @@ Todos os eventos, equipes, resultados, datas e regulamentos são exemplos fictí
 
 ## Validação e publicação
 
-`node validate-esports.cjs` usa Playwright com um navegador Chromium instalado. Também aceita `ECHO_CHROMIUM_EXECUTABLE` para um executável local. O script inicia seu próprio servidor local e verifica desktop, tablet em retrato/paisagem e celular em duas larguras, incluindo emulação de toque. Capturas e relatório são escritos em `ECHO_QA_OUTPUT` (padrão: `/tmp/echo-circuit-qa`). A emulação não substitui validação em aparelhos físicos ou Safari nativo.
+`npm run verify` valida recursos e sintaxe de todo `public/`, confere o manifesto e executa os testes nativos do Node. `npm run test:browser` executa as jornadas responsivas existentes com Playwright nos tamanhos desktop/tablet/celular, os fluxos da central e uma auditoria axe-core. Playwright é dependência de desenvolvimento fixada no lockfile; depois de `npm ci`, instale Chromium com `npx playwright install chromium`. Em Linux CI, use `npx playwright install --with-deps chromium`. Os relatórios de acessibilidade são informativos por padrão; `A11Y_STRICT=1` interrompe a suíte em violações sérias/críticas após triagem. As capturas não substituem testes em aparelhos físicos ou Safari nativo.
 
-O build existente copia `public/` para `dist/`. A publicação utiliza o projeto privado já registrado em `.openai/hosting.json`; não há mudança de público nem publicação no GitLab ou no site público do Echo Arena.
+`npm run build` copia toda a pasta histórica `public/` para `dist/`. Para publicar somente o circuito demonstrativo, use `npm run build:esports`, que gera `dist-esports/` com a página do circuito na raiz; `npm run preview:esports` permite conferir esse artefato localmente. Nenhum desses comandos publica o site. Antes de hospedar o build completo, revise as páginas históricas e as integrações incluídas.
